@@ -63,3 +63,29 @@ INSERT INTO `agency_hotel_options` (`id`,`hotel_id`,`agency_id`,`percent`,`is_bl
 (18,8,2,12,0,0,0),
 (19,9,2,10,1,0,0),
 (20,10,2,14,1,0,0);
+
+INSERT INTO `rules` (`name`, `agency_id`, `active`, `notification_text`) VALUES
+    ('Проверка на чёрный лист', 1, 1, 'Проверка пройдена на чёрный лист'),
+    ('Проверка на белый лист', 1, 1, 'Проверка пройдена на белый лист'),
+    ('Проверка на рекомендацию', 1, 1, 'Проверка пройдена на рекомендацию'),
+    ('Проверка на договор с отелем', 1, 1, 'Проверка пройдена на договор с отелем'),
+    ('Проверка на договор по умолчанию', 1, 1, 'Проверка пройдена на договор по умолчанию'),
+    ('Проверка на комиссию или скидку', 1, 1, 'Проверка пройдена на комиссию или скидку'),
+    ('Проверка на звёздность', 1, 1, 'Проверка пройдена на звёздность'),
+    ('Проверка на город', 1, 1, 'Проверка пройдена на город'),
+    ('Проверка на страну', 1, 1, 'Проверка пройдена на страну');
+
+INSERT INTO `rule_conditions` (`rule_id`, `field_name`, `operator`, `value`) VALUES
+#    (1, 'is_country_not_equals', 'not_equals', '1'),
+    (9, 'is_country_equals', 'equals', '1'),
+#    (1, 'is_city_not_equals', 'not_equals', '1'),
+    (8, 'is_city_equals', 'equals', '1'),
+#    (1, 'is_stars_not_equals', 'not_equals', '1'),
+    (7, 'is_stars_equals', 'equals', '1'),
+    (6, 'agreement_with_commission_or_discount', 'greater_than', '10'),
+    (5, 'agreement_by_default', 'equals', '1'),
+#    (1, 'company_isnt_agreement_with_hotel', 'not_equals', '1'),
+    (4, 'company_in_agreement_with_hotel', 'equals', '1'),
+    (3, 'is_recomend', 'equals', '0'),
+    (1, 'is_black', 'equals', '1'),
+    (2, 'is_white', 'equals', '1');
